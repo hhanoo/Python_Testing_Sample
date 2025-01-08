@@ -29,7 +29,6 @@
 
 - Torch (Version: Linux, Pip, Python, CUDA 12.1)
   ```bash
-  #### My case: Driver 555.42, CUDA 12.5, ####
   pip3 install torch torchvision torchaudio
   ```
 
@@ -41,4 +40,21 @@
 - Ultralytics (Yolo)
   ```bash
   pip install ultralytics
+  ```
+
+- BiRefNet ([Manual Link](https://huggingface.co/ZhengPeng7/BiRefNet))
+  ```bash
+  pip install timm
+  pip install scikit-image
+  pip install kornia
+  pip install einops
+  pip install prettytable
+  pip install huggingface-hub
+  pip install accelerate
+  ```
+
+- Llama ()
+  ```bash
+  pip install --upgrade transformers
+  pip install accelerate
   ```

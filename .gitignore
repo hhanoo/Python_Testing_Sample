@@ -2,9 +2,10 @@
 venv/
 __pycache__
 
-/model/sam_vit_h_4b8939.pth
-/model/yolo11l.pt
-/model/yolo11s-seg.pt
-/model/yolo11x-seg.pt
-
+# Camera parameters
 /intr_param.npy
+
+# Model
+/model/BiRefNet-general-epoch_244.pth
+/model/sam_vit_h_4b8939.pth
+/model/yolo11x-seg.pt
