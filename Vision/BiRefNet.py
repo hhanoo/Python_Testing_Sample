@@ -32,6 +32,7 @@ def main():
 
     # Retrieve camera parameters
     camera_matrix, camera_params = get_camera_parameters(sensor)
+    print(camera_matrix, camera_params)
 
     # Load model
     birefnet = BiRefNet(bb_pretrained=False)
@@ -51,9 +52,6 @@ def main():
         torchvision.transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    # Randomly generate a color mask (무작위 색상 마스크 생성)
-    color_mask = np.random.random(3)
-
     while True:
         # Retrieve sensor data
         rgb_data, depth_data = sensor.get_data()
@@ -71,13 +69,17 @@ def main():
         pred_pil = pred_pil.resize((rgb_data.shape[1], rgb_data.shape[0]))
         pred_np = np.array(pred_pil)
 
-        # Apply mask to the original RGB image
-        pred_mask = pred_np > 0
-        pred_np_colored = np.zeros_like(rgb_data, dtype=np.uint8)
-        pred_np_colored[pred_mask] = rgb_data[pred_mask]
+        # Threshold-based binarization
+        threshold = 64
+        binary_mask = (pred_np > threshold).astype(np.uint8)
+        cv2.imshow("test", binary_mask*255)
+
+        # Apply mask
+        color_mask = np.array([0, 255, 0])  # 녹색 (RGB)
+        rgb_data[binary_mask == 1] = color_mask * 0.35 + rgb_data[binary_mask == 1] * 0.65
 
         # Display result
-        cv2.imshow("WINDOW", pred_np_colored)
+        cv2.imshow("WINDOW", rgb_data)
 
         # Handle user input
         msg = cv2.waitKey(1)

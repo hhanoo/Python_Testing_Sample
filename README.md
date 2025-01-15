@@ -1,5 +1,3 @@
-# Python Testing Sample
-
 ## Environment
 
 - OS: Ubuntu 20.04 LTS
@@ -10,21 +8,16 @@
 - Device: RealSense
 - GPU : RTX 4090
 
-## Install
+## Necessary Install
 
 - PIP Update
   ```bash
   pip install --upgrade pip
   ```
-  
+
 - RealSense
   ```bash
   pip install pyrealsense2
-  ```
-  
-- PyInstaller ([Manual Link](https://pyinstaller.org/en/stable/))
-  ```bash
-  pip install pyinstaller
   ```
 
 - Torch (Version: Linux, Pip, Python, CUDA 12.1)
@@ -32,6 +25,13 @@
   pip3 install torch torchvision torchaudio
   ```
 
+## Required Install
+
+- PyInstaller ([Manual Link](https://pyinstaller.org/en/stable/))
+  ```bash
+  pip install pyinstaller
+  ```
+  
 - Segment-anything  (SAM)
   ```bash
   pip install git+https://github.com/facebookresearch/segment-anything.git
@@ -53,8 +53,13 @@
   pip install accelerate
   ```
 
-- Llama ()
+- Llama
   ```bash
+  # Using huggingface
   pip install --upgrade transformers
   pip install accelerate
+  ```
+  ```bash
+  # Using ollama
+  pip install ollama
   ```
