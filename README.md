@@ -63,3 +63,11 @@
   # Using ollama
   pip install ollama
   ```
+  
+- Grounded SAM (In Grounded SAM folder)
+  ```bash
+    cd grounded_sam
+    pip install -e .
+    python -m pip install -e segment_anything
+    pip install --no-build-isolation -e grounding_dino
+  ```

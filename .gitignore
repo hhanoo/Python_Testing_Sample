@@ -7,6 +7,9 @@ __pycache__
 
 # Model
 /model/BiRefNet-general-epoch_244.pth
+/model/BiRefNet_HR-general-epoch_230.pth
+/model/groundingdino_swint_ogc.pth
+/model/sam2.1_hiera_large.pt
 /model/sam_vit_h_4b8939.pth
 /model/yolo11x-seg.pt
 
