@@ -14,6 +14,12 @@ print("PyTorch version:", torch.__version__)
 print("Torchvision version:", torchvision.__version__)
 print("CUDA is available:", torch.cuda.is_available())
 
+# MODEL_PATH = "../model/BiRefNet_HR-general-epoch_230.pth"
+# MODEL_INPUT_SIZE = (2048, 2048)
+
+MODEL_PATH = "../model/BiRefNet-general-epoch_244.pth"
+MODEL_INPUT_SIZE = (1024, 1024)
+
 
 def get_camera_parameters(sensor):
     ppx, ppy, fx, fy = sensor.intr_params.ppx, sensor.intr_params.ppy, sensor.intr_params.fx, sensor.intr_params.fy
@@ -36,7 +42,7 @@ def main():
 
     # Load model
     birefnet = BiRefNet(bb_pretrained=False)
-    state_dict = torch.load('../model/BiRefNet-general-epoch_244.pth', map_location='cpu', weights_only=True)
+    state_dict = torch.load(MODEL_PATH, map_location='cpu', weights_only=True)
     state_dict = check_state_dict(state_dict)  # Check and process the state dictionary (상태 사전 확인 및 처리)
     birefnet.load_state_dict(state_dict)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -47,7 +53,7 @@ def main():
 
     # Define preprocessing transformations (전처리 변환 정의)
     transform_image = torchvision.transforms.Compose([
-        torchvision.transforms.Resize((1024, 1024)),
+        torchvision.transforms.Resize(MODEL_INPUT_SIZE),
         torchvision.transforms.ToTensor(),
         torchvision.transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
@@ -72,7 +78,7 @@ def main():
         # Threshold-based binarization
         threshold = 64
         binary_mask = (pred_np > threshold).astype(np.uint8)
-        cv2.imshow("test", binary_mask*255)
+        cv2.imshow("test", binary_mask * 255)
 
         # Apply mask
         color_mask = np.array([0, 255, 0])  # 녹색 (RGB)
