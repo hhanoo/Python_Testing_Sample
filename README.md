@@ -18,6 +18,7 @@
 - RealSense
   ```bash
   pip install pyrealsense2
+  pip install opencv-python
   ```
 
 - Torch (Version: Linux, Pip, Python, CUDA 12.1)
@@ -27,22 +28,22 @@
 
 ## Required Install
 
-- PyInstaller ([Manual Link](https://pyinstaller.org/en/stable/))
+- PyInstaller [[Manual Link](https://pyinstaller.org/en/stable/)]
   ```bash
   pip install pyinstaller
   ```
   
-- Segment-anything  (SAM)
+- Segment-anything (SAM) [[Manual Link](https://github.com/facebookresearch/segment-anything)]
   ```bash
   pip install git+https://github.com/facebookresearch/segment-anything.git
   ```
 
-- Ultralytics (Yolo)
+- Ultralytics (Yolo) [[Manual Link](https://github.com/ultralytics/ultralytics)]
   ```bash
   pip install ultralytics
   ```
 
-- BiRefNet ([Manual Link](https://huggingface.co/ZhengPeng7/BiRefNet))
+- BiRefNet [[Manual Link](https://huggingface.co/ZhengPeng7/BiRefNet)]
   ```bash
   pip install timm
   pip install scikit-image
@@ -53,21 +54,21 @@
   pip install accelerate
   ```
 
-- Llama
-  ```bash
-  # Using huggingface
-  pip install --upgrade transformers
-  pip install accelerate
-  ```
-  ```bash
-  # Using ollama
-  pip install ollama
-  ```
+- Llama [[Manual Link](https://github.com/meta-llama)]
+  - Type 1: Using huggingface
+    ```bash
+    pip install --upgrade transformers
+    pip install accelerate
+    ```
+  - Type 2: Using ollama
+    ```bash
+    pip install ollama
+    ```
   
-- Grounded SAM (In Grounded SAM folder)
+- Grounded SAM2 (In Grounded SAM folder) [[Manual Link](https://github.com/IDEA-Research/Grounded-SAM-2)]
   ```bash
-    cd grounded_sam
-    pip install -e .
-    python -m pip install -e segment_anything
-    pip install --no-build-isolation -e grounding_dino
+  cd grounded_sam
+  pip install -e .
+  python -m pip install -e segment_anything
+  pip install --no-build-isolation -e grounding_dino
   ```
